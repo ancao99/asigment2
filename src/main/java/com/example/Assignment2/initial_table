@@ -1,0 +1,45 @@
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    age INT NOT NULL
+);
+
+CREATE TABLE teachers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    subject VARCHAR(255)
+);
+
+CREATE TABLE student_teacher (
+    student_id INT,
+    teacher_id INT,
+    PRIMARY KEY (student_id, teacher_id),
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (teacher_id) REFERENCES teachers(id)
+);
+-- Insert sample data into the students table
+INSERT INTO students (name, age) VALUES
+('Alice Johnson', 14),
+('Bob Smith', 15),
+('Charlie Davis', 13),
+('Diana Evans', 16),
+('Ethan Brown', 14);
+
+-- Insert sample data into the teachers table
+INSERT INTO teachers (name, subject) VALUES
+('Mr. Thomas', 'Mathematics'),
+('Ms. Carter', 'Science'),
+('Mrs. Green', 'History'),
+('Mr. Lewis', 'English'),
+('Ms. Roberts', 'Art');
+
+-- Insert sample data into the student_teacher table
+INSERT INTO student_teacher (student_id, teacher_id) VALUES
+(1, 1), -- Alice - Mr. Thomas
+(1, 2), -- Alice - Ms. Carter
+(2, 1), -- Bob - Mr. Thomas
+(2, 3), -- Bob - Mrs. Green
+(3, 4), -- Charlie - Mr. Lewis
+(4, 5), -- Diana - Ms. Roberts
+(5, 1), -- Ethan - Mr. Thomas
+(5, 2)
