@@ -2,7 +2,7 @@ package com.example.Assignment2.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "teachers")
@@ -16,7 +16,7 @@ public class Teacher {
 
     @ManyToMany(mappedBy = "teachers", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonBackReference // Prevents infinite recursion
-    private Set<Student> students;
+    private List<Student> students = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -42,11 +42,11 @@ public class Teacher {
         this.subject = subject;
     }
 
-    public Set<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 // Getters and Setters

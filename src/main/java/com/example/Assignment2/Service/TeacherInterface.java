@@ -1,4 +1,9 @@
 package com.example.Assignment2.Service;
 
-public class TeacherInterface {
+import com.example.Assignment2.Entity.Teacher;
+
+import java.util.List;
+
+interface TeacherInterface {
+    List<Teacher> getTeachersByStudentId(int studentId);
 }

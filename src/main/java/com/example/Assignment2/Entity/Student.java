@@ -2,7 +2,7 @@ package com.example.Assignment2.Entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "students")
@@ -21,7 +21,7 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "teacher_id")
     )
     @JsonManagedReference // Handles forward serialization of 'teachers'
-    private Set<Teacher> teachers;
+    private List<Teacher> teachers = new ArrayList<>();
 
     // Getters and Setters
 
@@ -49,11 +49,11 @@ public class Student {
         this.age = age;
     }
 
-    public Set<Teacher> getTeachers() {
+    public List<Teacher> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(Set<Teacher> teachers) {
+    public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
     }
 }
